@@ -8,6 +8,11 @@ public class Skøde {
         this.pris = pris;
         ejer = null;
     }
+
+    public int getPris() {
+        return pris;
+    }
+
     public void setEjer(Spiller ejer) {
         this.ejer = ejer;
     }
