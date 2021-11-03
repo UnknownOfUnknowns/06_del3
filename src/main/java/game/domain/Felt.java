@@ -1,33 +1,23 @@
 package game.domain;
 
-public class Felt {
-    private int likviditetsvikrning;
+public abstract class Felt {
     private String navn;
-    private boolean giverEkstraTur;
-    public Felt(int likviditetsvirkning, String navn, boolean giverEkstraTur){
-        this.likviditetsvikrning = likviditetsvirkning;
+    private Felt næste_felt;
+    public Felt(String navn, Felt næste_felt){
         this.navn = navn;
-        this.giverEkstraTur = giverEkstraTur;
-    }
-
-    public int getLikviditetsvikrning() {
-        return likviditetsvikrning;
+        this.næste_felt = næste_felt;
     }
 
     public String getNavn() {
         return navn;
     }
 
-    public boolean giverEkstraTur() {
-        return giverEkstraTur;
-    }
+    abstract void landet_på(Spiller s);
 
     @Override
     public String toString() {
         return "Felt{" +
-                "Likviditetsvikrning = " + likviditetsvikrning +
                 "Navn = " + navn +
-                "EkstraTur = " + giverEkstraTur +
                 '}';
     }
 }

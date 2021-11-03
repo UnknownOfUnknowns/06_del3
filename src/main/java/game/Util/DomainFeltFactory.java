@@ -18,7 +18,7 @@ public class DomainFeltFactory extends FeltFactory {
             String navn = input.next();
             int likviditetsvirkning = Integer.parseInt(input.next());
             boolean ekstraTur = Boolean.parseBoolean(input.next());
-            felter.add(new Felt(likviditetsvirkning, navn, ekstraTur));
+           // felter.add(new Felt(likviditetsvirkning, navn, ekstraTur));
             input.next(); // skip besked
         }
         return felter.toArray(new Felt[0]); // cast til array
