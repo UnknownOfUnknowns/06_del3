@@ -1,8 +1,10 @@
 package game.domain;
 
-public class Bank {
-    private static Bank instance;
+import java.util.List;
 
+public class Bank {
+
+    private static Bank instance;
     private Bank(){
 
     }
