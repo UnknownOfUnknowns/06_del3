@@ -12,7 +12,6 @@ public class DomainFeltFactory extends FeltFactory {
     }
 
     public Felt[] loadFelter() throws FileNotFoundException {
-        resetInput();
         ArrayList<Felt> felter = new ArrayList<>();
         while(input.hasNext()){
             String navn = input.next();

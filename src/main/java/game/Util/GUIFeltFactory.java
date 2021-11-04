@@ -15,7 +15,6 @@ public class GUIFeltFactory extends FeltFactory{
     }
 
     public HashMap<String,String> lavBeskeder() throws FileNotFoundException {
-        resetInput();
         HashMap<String,String> beskeder = new HashMap<>();
         while (input.hasNext()) {
             String key = input.next();
@@ -28,7 +27,6 @@ public class GUIFeltFactory extends FeltFactory{
     }
 
     public GUI_Field[] loadFelter() throws FileNotFoundException {
-        resetInput();
         ArrayList<GUI_Field> felter = new ArrayList<>();
         while(input.hasNext()){
             felter.add(new GUI_Street(input.next(), "Pris: " + input.next(),"", "", Color.blue, Color.black));
