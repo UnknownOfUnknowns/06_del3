@@ -1,4 +1,6 @@
-package game.domain;
+package game.domain.felter;
+
+import game.domain.Spiller;
 
 public abstract class Felt {
     private String navn;

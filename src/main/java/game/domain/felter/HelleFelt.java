@@ -1,4 +1,6 @@
-package game.domain;
+package game.domain.felter;
+
+import game.domain.Spiller;
 
 public class HelleFelt extends Felt{
 

@@ -1,4 +1,7 @@
-package game.domain;
+package game.domain.felter;
+
+import game.domain.Skøde;
+import game.domain.Spiller;
 
 public class EjendomsFelt extends Felt{
     private Skøde skøde;

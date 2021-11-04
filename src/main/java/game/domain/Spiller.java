@@ -1,6 +1,7 @@
 package game.domain;
 
 import game.Util.SpilData;
+import game.domain.felter.Felt;
 
 public class Spiller {
     private Konto konto;

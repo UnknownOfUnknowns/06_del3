@@ -1,6 +1,6 @@
 package game.Util;
 
-import game.domain.Felt;
+import game.domain.felter.Felt;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;

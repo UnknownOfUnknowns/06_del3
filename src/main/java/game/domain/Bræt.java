@@ -1,6 +1,7 @@
 package game.domain;
 
 import game.Util.DomainFeltFactory;
+import game.domain.felter.Felt;
 
 import java.io.FileNotFoundException;
 
