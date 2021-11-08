@@ -26,7 +26,7 @@ public class GUIFeltFactory extends FeltFactory{
                 case "Start" -> felter.add(new GUI_Street("Start", "", "", "", Color.RED, Color.black));
                 default -> {
                     String pris = Integer.toString(input.nextInt()) + "$";
-                    felter.add(new GUI_Street(buffer, pris, pris, pris, Color.WHITE, Color.BLACK));
+                    felter.add(new GUI_Street(buffer, pris, "", pris, Color.WHITE, Color.BLACK));
                     break;
                 }
             }
