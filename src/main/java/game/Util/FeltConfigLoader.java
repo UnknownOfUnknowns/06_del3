@@ -24,4 +24,8 @@ public class FeltConfigLoader {
     public boolean hasNext(){
         return feltInput.hasNext();
     }
+
+    public int nextInt(){
+        return feltInput.nextInt();
+    }
 }

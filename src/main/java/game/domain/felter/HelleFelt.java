@@ -8,6 +8,8 @@ public class HelleFelt extends Felt{
         super(navn, næste_felt);
     }
 
+    public HelleFelt(String navn) { super(navn); }
+
     @Override
     void landet_på(Spiller s) {
         return;

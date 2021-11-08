@@ -5,8 +5,13 @@ import game.domain.Spiller;
 
 public class EjendomsFelt extends Felt{
     private Skøde skøde;
-    public EjendomsFelt(String navn, Felt næste_felt) {
+    public EjendomsFelt(String navn, Felt næste_felt, int pris) {
         super(navn, næste_felt);
+        skøde = new Skøde(pris);
+    }
+    public EjendomsFelt(String navn, int pris) {
+        super(navn);
+        skøde = new Skøde(pris);
     }
 
     @Override
