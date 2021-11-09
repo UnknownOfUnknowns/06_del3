@@ -27,6 +27,10 @@ public abstract class Felt {
         næste_felt = f;
     }
 
+    public Felt getNæste_felt() {
+        return næste_felt;
+    }
+
     @Override
     public String toString() {
         return "Felt{" +

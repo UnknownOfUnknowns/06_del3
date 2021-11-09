@@ -23,6 +23,15 @@ public class Spiller {
         int sum = t1.getVærdi() + t2.getVærdi();
         return sum;
     }
+    public void tag_tur(){
+        rul_terninger();
+        for (int i = 0; i < getTerningSum(); i++) {
+            felt = felt.getNæste_felt();
+            felt.passeret(this);
+        }
+        felt.landet_på(this);
+
+    }
 
     private int[] getTerningØjne(){
         return new int[]{t1.getVærdi(), t2.getVærdi()};
