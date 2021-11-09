@@ -44,6 +44,7 @@ public class Spiller {
     public int getTerningSum(){
         return t1.getVærdi() + t2.getVærdi();
     }
+
     public void setFelt(Felt felt) {
 
         this.felt = felt;

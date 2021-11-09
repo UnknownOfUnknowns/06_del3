@@ -14,6 +14,11 @@ public class StartFelt extends Felt{
     }
 
     @Override
+    public void passeret(Spiller s) {
+        s.getKonto().påvirkBalance(2);
+    }
+
+    @Override
     void landet_på(Spiller s) {
 
     }

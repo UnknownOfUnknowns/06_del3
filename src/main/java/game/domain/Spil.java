@@ -20,4 +20,5 @@ public class Spil {
         vinder = null;
         tur_spiller = spillere[0];
     }
+
 }

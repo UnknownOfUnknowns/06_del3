@@ -20,6 +20,9 @@ public abstract class Felt {
 
     abstract void landet_på(Spiller s);
 
+    public void passeret(Spiller s){
+        return;
+    }
     public void setNæste_felt(Felt f){
         næste_felt = f;
     }
