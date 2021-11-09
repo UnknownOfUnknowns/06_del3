@@ -3,7 +3,7 @@ package game.Util;
 public class SpilData {
     private static SpilData instance;
     private final int TERNINGSIDER = 6;
-    private final int STARTBALANCE = 1000;
+    private final int STARTBALANCE = 35;
     private final int VINDERBALANCE = 3000;
     private SpilData(){
 
