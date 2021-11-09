@@ -15,7 +15,7 @@ public class EjendomsFelt extends Felt{
     }
 
     @Override
-    void landet_på(Spiller s) {
+    public void landet_på(Spiller s) {
         if(skøde.getEjer() != null){
             int likviditetsvirkning = skøde.getPris();
             s.getKonto().påvirkBalance(-likviditetsvirkning);

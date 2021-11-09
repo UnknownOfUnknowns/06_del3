@@ -19,7 +19,7 @@ public class StartFelt extends Felt{
     }
 
     @Override
-    void landet_på(Spiller s) {
+    public void landet_på(Spiller s) {
 
     }
 }

@@ -18,7 +18,7 @@ public abstract class Felt {
         return navn;
     }
 
-    abstract void landet_på(Spiller s);
+    public abstract void landet_på(Spiller s);
 
     public void passeret(Spiller s){
         return;

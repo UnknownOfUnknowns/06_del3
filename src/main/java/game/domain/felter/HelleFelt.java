@@ -11,7 +11,7 @@ public class HelleFelt extends Felt{
     public HelleFelt(String navn) { super(navn); }
 
     @Override
-    void landet_på(Spiller s) {
+    public void landet_på(Spiller s) {
         return;
     }
 }
