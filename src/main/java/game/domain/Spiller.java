@@ -28,7 +28,7 @@ public class Spiller {
         ryk(getTerningSum());
     }
 
-    private void ryk(int antalFelter){
+    public void ryk(int antalFelter){
         for (int i = 0; i < antalFelter; i++) {
             felt = felt.getNæste_felt();
             felt.passeret(this);
