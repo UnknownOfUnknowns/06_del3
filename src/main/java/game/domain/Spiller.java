@@ -25,12 +25,15 @@ public class Spiller {
     }
     public void tag_tur(){
         rul_terninger();
-        for (int i = 0; i < getTerningSum(); i++) {
+        ryk(getTerningSum());
+    }
+
+    private void ryk(int antalFelter){
+        for (int i = 0; i < antalFelter; i++) {
             felt = felt.getNæste_felt();
             felt.passeret(this);
         }
         felt.landet_på(this);
-
     }
 
     private int[] getTerningØjne(){
