@@ -27,10 +27,28 @@ public class SpilGUI {
     }
 
     private void spil(){
-        while(true){
+        while(spil.harVinder() == null){
             gui.getUserButtonPressed("Tag næste tur", "Rul");
             spil.tagTur();
+            flytBiler();
+            for(int i = 0; i < spillere.length; i++){
+                setBil(spillere[i], spil.getSpillere().get(i).getFelt().getNavn());
+            }
+        }
+    }
+    private void flytBiler(){
+        for(GUI_Field f : gui.getFields())
+            f.removeAllCars();
+    }
 
+    private void setBil(GUI_Player spiller, String navn){
+        //find feltets navn der matcher mellem de to repræsentationer af felt
+        for(int i = 0; i < gui.getFields().length; i++){
+            String s = gui.getFields()[i].getTitle();
+            if(gui.getFields()[i].getTitle().equals(navn)){
+                gui.getFields()[i].setCar(spiller, true);
+                return;
+            }
         }
     }
 
