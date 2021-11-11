@@ -26,6 +26,9 @@ public class Spil {
 
     public void tagTur(){
         tur_spiller.tag_tur();
+    }
+
+    public void skiftTurSpiller(){
         for (int i = 0; i < spillere.size()-1; i++) {
             if(spillere.get(i) == tur_spiller){
                 tur_spiller = spillere.get(i+1);
@@ -33,6 +36,11 @@ public class Spil {
             }
         }
         tur_spiller = spillere.get(0);
+
+    }
+
+    public Spiller getTur_spiller() {
+        return tur_spiller;
     }
 
     public Spiller harVinder(){

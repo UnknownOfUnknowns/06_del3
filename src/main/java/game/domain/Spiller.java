@@ -25,7 +25,8 @@ public class Spiller {
     }
     public void tag_tur(){
         rul_terninger();
-        ryk(getTerningSum());
+        int x = getTerningSum();
+        ryk(x);
     }
 
     public void ryk(int antalFelter){
@@ -36,7 +37,7 @@ public class Spiller {
         felt.landet_på(this);
     }
 
-    private int[] getTerningØjne(){
+    public int[] getTerningØjne(){
         return new int[]{t1.getVærdi(), t2.getVærdi()};
     }
 

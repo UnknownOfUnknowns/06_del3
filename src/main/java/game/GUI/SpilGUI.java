@@ -30,10 +30,13 @@ public class SpilGUI {
         while(spil.harVinder() == null){
             gui.getUserButtonPressed("Tag næste tur", "Rul");
             spil.tagTur();
+            int[] øjne = spil.getTur_spiller().getTerningØjne();
+            gui.setDice(øjne[0], øjne[1]);
             flytBiler();
             for(int i = 0; i < spillere.length; i++){
                 setBil(spillere[i], spil.getSpillere().get(i).getFelt().getNavn());
             }
+            spil.skiftTurSpiller();
         }
     }
     private void flytBiler(){

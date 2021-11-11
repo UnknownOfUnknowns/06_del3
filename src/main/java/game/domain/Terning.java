@@ -6,7 +6,6 @@ public class Terning {
     public Terning(int sider){
         SIDER = sider;
         værdi = 1;
-
     }
 
     public void rul(){
