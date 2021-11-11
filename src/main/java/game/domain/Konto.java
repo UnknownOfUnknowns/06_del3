@@ -2,6 +2,7 @@ package game.domain;
 
 public class Konto {
     private int saldo;
+
     public Konto(int startbeholdning){
         saldo = startbeholdning;
     }

@@ -39,6 +39,10 @@ public class Spil {
 
     }
 
+    public Bræt getSpillebræt() {
+        return spillebræt;
+    }
+
     public Spiller getTur_spiller() {
         return tur_spiller;
     }
@@ -54,5 +58,9 @@ public class Spil {
 
     public ArrayList<Spiller> getSpillere() {
         return spillere;
+    }
+
+    public Spiller getVinder() {
+        return vinder;
     }
 }

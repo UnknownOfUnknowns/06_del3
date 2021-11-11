@@ -14,8 +14,7 @@ public class Bræt {
     }
 
     public Felt getFelt (int Øjne){
-        // -2 for at forskyde terningernes værdi ind til array indekset
-        return felter[Øjne-2];
+        return felter[Øjne];
     }
     public Felt getStartfelt(){
         return felter[0];

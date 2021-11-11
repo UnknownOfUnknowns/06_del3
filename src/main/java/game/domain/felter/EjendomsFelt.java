@@ -20,6 +20,9 @@ public class EjendomsFelt extends Felt{
             int likviditetsvirkning = skøde.getPris();
             s.getKonto().påvirkBalance(-likviditetsvirkning);
             skøde.getEjer().getKonto().påvirkBalance(likviditetsvirkning);
+        }else{
+            s.getKonto().påvirkBalance(-skøde.getPris());
+            skøde.setEjer(s);
         }
 
     }

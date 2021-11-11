@@ -21,4 +21,7 @@ public class Skøde {
         return ejer;
     }
 
+    public void setEjer(Spiller ejer) {
+        this.ejer = ejer;
+    }
 }

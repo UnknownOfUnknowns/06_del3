@@ -5,6 +5,7 @@ import game.Util.GUIFeltFactory;
 import game.Util.SpilData;
 import game.domain.Bræt;
 import game.domain.Spil;
+import game.domain.felter.Felt;
 import gui_fields.GUI_Car;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
@@ -13,16 +14,24 @@ import gui_main.GUI;
 
 import java.awt.*;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SpilGUI {
     private GUI_Player[] spillere;
+    private final Color[] bil_farver = new Color[]{Color.PINK, Color.CYAN, Color.YELLOW, Color.GREEN};
     private GUI gui;
     private Spil spil;
+    private Map<Felt, GUI_Field> feltKonfiguation;
     public SpilGUI() throws FileNotFoundException {
         GUIFeltFactory factory = new GUIFeltFactory();
         GUI_Field[] felter = factory.loadFelter();
         gui = new GUI(felter);
+        feltKonfiguation = new HashMap<>();
         setup_Spillere();
+        for(int i = 0; i < felter.length; i++){
+            feltKonfiguation.put(spil.getSpillebræt().getFelt(i), felter[i]);
+        }
         spil();
     }
 
@@ -34,30 +43,32 @@ public class SpilGUI {
             gui.setDice(øjne[0], øjne[1]);
             flytBiler();
             for(int i = 0; i < spillere.length; i++){
-                setBil(spillere[i], spil.getSpillere().get(i).getFelt().getNavn());
+                setBil(spillere[i], spil.getSpillere().get(i).getFelt());
             }
             spil.skiftTurSpiller();
         }
     }
+
+    private void opdaterSpillerBalance(){
+        for(int i = 0; i < spillere.length; i++){
+            spillere[i].setBalance(spil.getSpillere().get(i).getKonto().getSaldo());
+        }
+    }
+
     private void flytBiler(){
         for(GUI_Field f : gui.getFields())
             f.removeAllCars();
     }
 
-    private void setBil(GUI_Player spiller, String navn){
+    private void setBil(GUI_Player spiller, Felt felt){
         //find feltets navn der matcher mellem de to repræsentationer af felt
-        for(int i = 0; i < gui.getFields().length; i++){
-            String s = gui.getFields()[i].getTitle();
-            if(gui.getFields()[i].getTitle().equals(navn)){
-                gui.getFields()[i].setCar(spiller, true);
-                return;
-            }
-        }
+        GUI_Field nytFelt = feltKonfiguation.get(felt);
+        nytFelt.setCar(spiller, true);
+        opdaterSpillerBalance();
     }
 
     public void setup_Spillere() throws FileNotFoundException {
         SpilData data = SpilData.getInstance();
-        Color[] bil_farver = new Color[]{Color.RED, Color.BLUE, Color.YELLOW, Color.GREEN};
         int antal = gui.getUserInteger("Indtast antal spillere", 2,4);
         while(antal > 4 || antal < 2){
             antal = gui.getUserInteger("Indtast antal spillere", 2,4);
@@ -71,6 +82,10 @@ public class SpilGUI {
             gui.getFields()[0].setCar(spillere[i], true);
         }
         spil = new Spil(antal);
+    }
+
+    private void opdaterFelter(){
+
     }
 
 }
