@@ -12,8 +12,7 @@ public class Konto {
     }
 
     public boolean påvirkBalance(int s){
-        saldo += s;
-        if(saldo < 0) saldo = 0; //saldo må ikke være under 0
+        saldo += s; //saldo kan godt være under 0, hvis den er det har man tabt
         return true;
     }
 

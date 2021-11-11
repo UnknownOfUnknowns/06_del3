@@ -48,7 +48,7 @@ public class Spil {
     }
 
     public Spiller harVinder(){
-        if(spillere.stream().anyMatch(x -> x.getKonto().getSaldo() <=0)){
+        if(spillere.stream().anyMatch(x -> x.getKonto().getSaldo() < 0)){
             vinder = spillere.get(0);
             for(int i = 1; i < spillere.size(); i++)
                 vinder = spillere.get(i).getKonto().getSaldo() > vinder.getKonto().getSaldo() ? spillere.get(i) : vinder;
