@@ -26,4 +26,9 @@ public class EjendomsFelt extends Felt{
         }
 
     }
+
+    public Skøde getSkøde() {
+        return skøde;
+    }
+
 }

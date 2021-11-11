@@ -5,6 +5,8 @@ import game.Util.GUIFeltFactory;
 import game.Util.SpilData;
 import game.domain.Bræt;
 import game.domain.Spil;
+import game.domain.Spiller;
+import game.domain.felter.EjendomsFelt;
 import game.domain.felter.Felt;
 import gui_fields.GUI_Car;
 import gui_fields.GUI_Field;
@@ -14,6 +16,7 @@ import gui_main.GUI;
 
 import java.awt.*;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,6 +26,7 @@ public class SpilGUI {
     private GUI gui;
     private Spil spil;
     private Map<Felt, GUI_Field> feltKonfiguation;
+    private Map<Spiller, GUI_Player> spillerKonfiguration;
     public SpilGUI() throws FileNotFoundException {
         GUIFeltFactory factory = new GUIFeltFactory();
         GUI_Field[] felter = factory.loadFelter();
@@ -31,6 +35,10 @@ public class SpilGUI {
         setup_Spillere();
         for(int i = 0; i < felter.length; i++){
             feltKonfiguation.put(spil.getSpillebræt().getFelt(i), felter[i]);
+        }
+        spillerKonfiguration = new HashMap<>();
+        for (int i = 0; i < spillere.length; i++) {
+            spillerKonfiguration.put(spil.getSpillere().get(i), spillere[i]);
         }
         spil();
     }
@@ -46,6 +54,7 @@ public class SpilGUI {
                 setBil(spillere[i], spil.getSpillere().get(i).getFelt());
             }
             spil.skiftTurSpiller();
+            opdaterFelter();
         }
     }
 
@@ -85,7 +94,12 @@ public class SpilGUI {
     }
 
     private void opdaterFelter(){
-
+        ArrayList<EjendomsFelt> felter = spil.getSpillebræt().getEjedeFelter();
+        for (EjendomsFelt felt: felter) {
+            GUI_Field guiFelt = feltKonfiguation.get(felt);
+            GUI_Player spiller = spillerKonfiguration.get(felt.getSkøde().getEjer());
+            guiFelt.setBackGroundColor(spiller.getPrimaryColor());
+        }
     }
 
 }
