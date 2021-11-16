@@ -14,10 +14,10 @@ public class Spil {
     private Spiller tur_spiller;
     private Bræt spillebræt;
 
-    public Spil (int antal_spillere) throws FileNotFoundException {
+    public Spil () throws FileNotFoundException {
         spillebræt = new Bræt();
         spillere = new ArrayList<>();
-        for (int i = 0; i < antal_spillere; i++){
+        for (int i = 0; i < SpilData.getInstance().getSPILLERE(); i++){
             spillere.add(new Spiller(spillebræt.getStartfelt()));
         }
         vinder = null;

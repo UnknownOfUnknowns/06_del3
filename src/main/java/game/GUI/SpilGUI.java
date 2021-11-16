@@ -82,6 +82,7 @@ public class SpilGUI {
         while(antal > 4 || antal < 2){
             antal = gui.getUserInteger("Indtast antal spillere", 2,4);
         }
+        SpilData.getInstance().setSPILLERE(antal);
         spillere = new GUI_Player[antal];
         for (int i = 0; i < spillere.length; i++) {
             GUI_Car bil = new GUI_Car();
@@ -90,7 +91,7 @@ public class SpilGUI {
             gui.addPlayer(spillere[i]);
             gui.getFields()[0].setCar(spillere[i], true);
         }
-        spil = new Spil(antal);
+        spil = new Spil();
     }
 
     private void opdaterFelter(){
