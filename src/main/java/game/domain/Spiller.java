@@ -2,8 +2,9 @@ package game.domain;
 
 import game.Util.SpilData;
 import game.domain.felter.Felt;
+import game.domain.obeserver.Subject;
 
-public class Spiller {
+public class Spiller extends Subject {
     private Konto konto;
     private Terning terning;
     private Felt felt;
@@ -28,6 +29,7 @@ public class Spiller {
             felt = felt.getNæste_felt();
             felt.passeret(this);
         }
+        Notify();
         felt.landet_på(this);
     }
 

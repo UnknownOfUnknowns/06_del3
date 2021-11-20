@@ -9,6 +9,8 @@ import game.domain.Spiller;
 import game.domain.felter.EjendomsFelt;
 import game.domain.felter.Felt;
 import game.domain.hjælpere.RykOpTilHjælper;
+import game.domain.obeserver.Observer;
+import game.domain.obeserver.Subject;
 import gui_fields.GUI_Car;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
@@ -21,7 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SpilGUI implements RykOpTilHjælper {
+public class SpilGUI implements Observer {
     private GUI_Player[] spillere;
     private final Color[] bil_farver = new Color[]{Color.PINK, Color.CYAN, Color.YELLOW, Color.GREEN};
     private GUI gui;
@@ -43,6 +45,7 @@ public class SpilGUI implements RykOpTilHjælper {
         for (int i = 0; i < spillere.length; i++) {
             spillerKonfiguration.put(spil.getSpillere().get(i), spillere[i]);
         }
+        attachTilSpillere();
     }
 
     public void spil(){
@@ -50,13 +53,17 @@ public class SpilGUI implements RykOpTilHjælper {
             gui.getUserButtonPressed("Tag næste tur", "Rul");
             spil.tagTur();
             gui.setDie(spil.getTur_spiller().getTerningØjne());
-            flytBiler();
-            for(int i = 0; i < spillere.length; i++){
-                setBil(spillere[i], spil.getSpillere().get(i).getFelt());
-            }
             spil.skiftTurSpiller();
             opdaterFelter();
         }
+    }
+
+    private void opdaterSpillerPosition(){
+        flytBiler();
+        for(int i = 0; i < spillere.length; i++){
+            setBil(spillere[i], spil.getSpillere().get(i).getFelt());
+        }
+        opdaterFelter();
     }
 
     private void opdaterSpillerBalance(){
@@ -104,12 +111,19 @@ public class SpilGUI implements RykOpTilHjælper {
         }
     }
 
-    @Override
-    public int getØnsketRyk(int max) {
-        return gui.getUserInteger("Hvor mange felter ønsket du at rykke, du kan rykke op til" + max + " felter",1, max);
-    }
-
     public InformationsHenter getInformationsHenter() {
         return informationsHenter;
+    }
+
+    public void attachTilSpillere(){
+        for(Spiller spiller : spil.getSpillere())
+            spiller.attach(this);
+    }
+
+    @Override
+    public void Update(Subject s) {
+        if(s.getClass() == Spiller.class){
+            opdaterSpillerPosition();
+        }
     }
 }
