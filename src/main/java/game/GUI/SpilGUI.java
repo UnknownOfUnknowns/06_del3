@@ -8,6 +8,7 @@ import game.domain.Spil;
 import game.domain.Spiller;
 import game.domain.felter.EjendomsFelt;
 import game.domain.felter.Felt;
+import game.domain.hjælpere.RykOpTilHjælper;
 import gui_fields.GUI_Car;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SpilGUI {
+public class SpilGUI implements RykOpTilHjælper {
     private GUI_Player[] spillere;
     private final Color[] bil_farver = new Color[]{Color.PINK, Color.CYAN, Color.YELLOW, Color.GREEN};
     private GUI gui;
@@ -102,4 +103,8 @@ public class SpilGUI {
         }
     }
 
+    @Override
+    public int getØnsketRyk(int max) {
+        return gui.getUserInteger("Hvor mange felter ønsket du at rykke, du kan rykke op til" + max + " felter",1, max);
+    }
 }
