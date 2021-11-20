@@ -8,8 +8,7 @@ public class SpilData {
     private static SpilData instance;
     private final int TERNINGSIDER = 6;
     private final Map<Integer, Integer> STARTBALANCEKONFIG;
-    private final int VINDERBALANCE = 3000;
-    private int SPILLERE;
+    private int ANTALSPILLERE;
     private SpilData(){
 
         STARTBALANCEKONFIG = new HashMap<Integer,Integer>();
@@ -18,12 +17,12 @@ public class SpilData {
         STARTBALANCEKONFIG.put(4,16);
     }
 
-    public void setSPILLERE(int SPILLERE) {
-        this.SPILLERE = SPILLERE;
+    public void setANTALSPILLERE(int ANTALSPILLERE) {
+        this.ANTALSPILLERE = ANTALSPILLERE;
     }
 
-    public int getSPILLERE() {
-        return SPILLERE;
+    public int getANTALSPILLERE() {
+        return ANTALSPILLERE;
     }
 
     public static SpilData getInstance() {
@@ -33,12 +32,8 @@ public class SpilData {
         return instance;
     }
 
-    public int getVINDERBALANCE() {
-        return VINDERBALANCE;
-    }
-
-    public int getSTARTBALANCE() {
-        return STARTBALANCEKONFIG.get(SPILLERE);
+   public int getSTARTBALANCE() {
+        return STARTBALANCEKONFIG.get(ANTALSPILLERE);
     }
 
     public int getTERNINGSIDER() {

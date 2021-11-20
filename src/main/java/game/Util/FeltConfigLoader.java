@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class FeltConfigLoader {
     private Scanner feltInput;
-    private static String fil = "/Users/alberthalkjaer/Desktop/ITØ/1. Semester/CDIO/06_del3/src/main/resources/FeltConfig";
+    private static String fil = "C:\\Users\\hans\\IdeaProjects\\06_del3\\src\\main\\resources\\FeltConfig";
 
     public FeltConfigLoader() throws FileNotFoundException {
         feltInput = new Scanner(new File(fil));

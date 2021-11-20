@@ -17,7 +17,7 @@ public class Spil {
     public Spil () throws FileNotFoundException {
         spillebræt = new Bræt();
         spillere = new ArrayList<>();
-        for (int i = 0; i < SpilData.getInstance().getSPILLERE(); i++){
+        for (int i = 0; i < SpilData.getInstance().getANTALSPILLERE(); i++){
             spillere.add(new Spiller(spillebræt.getStartfelt()));
         }
         vinder = null;
