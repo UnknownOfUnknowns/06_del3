@@ -28,10 +28,12 @@ public class SpilGUI implements RykOpTilHjælper {
     private Spil spil;
     private Map<Felt, GUI_Field> feltKonfiguation;
     private Map<Spiller, GUI_Player> spillerKonfiguration;
+    private InformationsHenter informationsHenter;
     public SpilGUI() throws FileNotFoundException {
         GUIFeltFactory factory = new GUIFeltFactory();
         GUI_Field[] felter = factory.loadFelter();
         gui = new GUI(felter);
+        informationsHenter = new InformationsHenter(gui);
         feltKonfiguation = new HashMap<>();
         setup_Spillere();
         for(int i = 0; i < felter.length; i++){
@@ -41,10 +43,9 @@ public class SpilGUI implements RykOpTilHjælper {
         for (int i = 0; i < spillere.length; i++) {
             spillerKonfiguration.put(spil.getSpillere().get(i), spillere[i]);
         }
-        spil();
     }
 
-    private void spil(){
+    public void spil(){
         while(spil.harVinder() == null){
             gui.getUserButtonPressed("Tag næste tur", "Rul");
             spil.tagTur();
@@ -106,5 +107,9 @@ public class SpilGUI implements RykOpTilHjælper {
     @Override
     public int getØnsketRyk(int max) {
         return gui.getUserInteger("Hvor mange felter ønsket du at rykke, du kan rykke op til" + max + " felter",1, max);
+    }
+
+    public InformationsHenter getInformationsHenter() {
+        return informationsHenter;
     }
 }

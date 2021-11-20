@@ -6,7 +6,9 @@ import game.domain.hjælpere.RykOpTilHjælper;
 public class RykOpTilFelter extends ChanceKort{
     private int rykMaxFelter;
     RykOpTilHjælper hjælper;
-    protected RykOpTilFelter(int rykFelter, RykOpTilHjælper hjælper) {
+
+    public RykOpTilFelter(String besked, int rykFelter, RykOpTilHjælper hjælper) {
+        super(besked);
         this.rykMaxFelter = rykFelter;
         this.hjælper = hjælper;
     }

@@ -5,7 +5,8 @@ import game.domain.Spiller;
 public class PåvirkPenge extends ChanceKort{
     private int mængde;
 
-    public PåvirkPenge(int mængde){
+    public PåvirkPenge(String besked, int mængde){
+        super(besked);
         this.mængde = mængde;
     }
 

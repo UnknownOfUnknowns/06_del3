@@ -1,9 +1,6 @@
 package game.Util;
 
-import game.domain.felter.EjendomsFelt;
-import game.domain.felter.Felt;
-import game.domain.felter.HelleFelt;
-import game.domain.felter.StartFelt;
+import game.domain.felter.*;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -22,6 +19,7 @@ public class DomainFeltFactory extends FeltFactory {
             switch (buffer){
                 case "Helle" -> felter.add(new HelleFelt("Helle"));
                 case "Start" -> felter.add(new StartFelt());
+                case "Chance" -> felter.add(new ChanceFelt("Chance"));
                 default -> {
                     EjendomsFelt nytFelt = new EjendomsFelt(buffer, input.nextInt());
                     felter.add(nytFelt);

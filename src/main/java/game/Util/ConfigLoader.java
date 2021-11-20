@@ -4,11 +4,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class FeltConfigLoader {
+public class ConfigLoader {
     private Scanner feltInput;
-    private static String fil = "C:\\Users\\hans\\IdeaProjects\\06_del3\\src\\main\\resources\\FeltConfig";
+    private String fil;
 
-    public FeltConfigLoader() throws FileNotFoundException {
+    public ConfigLoader(String filSti) throws FileNotFoundException {
+        fil = filSti;
         feltInput = new Scanner(new File(fil));
         feltInput.useDelimiter(";");
     }
