@@ -16,14 +16,22 @@ public class DomainFeltFactory extends FeltFactory {
 
     public Felt[] loadFelter() throws FileNotFoundException {
         ArrayList<Felt> felter = new ArrayList<>();
+        EjendomsFelt placeHolder = null;
         while(input.hasNext()){
             String buffer = input.next();
             switch (buffer){
                 case "Helle" -> felter.add(new HelleFelt("Helle"));
                 case "Start" -> felter.add(new StartFelt());
                 default -> {
-                    felter.add(new EjendomsFelt(buffer, input.nextInt()));
-                    break;
+                    EjendomsFelt nytFelt = new EjendomsFelt(buffer, input.nextInt());
+                    felter.add(nytFelt);
+                    if(placeHolder == null){
+                        placeHolder = nytFelt;
+                    } else{
+                        nytFelt.setGruppe_felt(placeHolder);
+                        placeHolder.setGruppe_felt(nytFelt);
+                        placeHolder = null;
+                    }
                 }
             }
         }
