@@ -20,6 +20,7 @@ public class DomainFeltFactory extends FeltFactory {
                 case "Helle" -> felter.add(new HelleFelt("Helle"));
                 case "Start" -> felter.add(new StartFelt());
                 case "Chance" -> felter.add(new ChanceFelt("Chance"));
+                case "FriParkering" -> felter.add(new FriParkeringFelt("Fri parkering"));
                 default -> {
                     EjendomsFelt nytFelt = new EjendomsFelt(buffer, input.nextInt());
                     felter.add(nytFelt);

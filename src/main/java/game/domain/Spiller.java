@@ -33,6 +33,13 @@ public class Spiller extends Subject {
         felt.landet_på(this);
     }
 
+    //Ryk direkte til et felt uden at lande/passere på felter undervejs
+    public void rykDirekteTil(String feltNavn){
+        while(!felt.getNavn().equals(feltNavn)){
+            felt = felt.getNæste_felt();
+        }
+        Notify();
+    }
     public int getTerningØjne(){
         return terning.getVærdi();
     }
