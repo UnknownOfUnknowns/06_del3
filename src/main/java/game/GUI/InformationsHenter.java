@@ -1,10 +1,9 @@
 package game.GUI;
 
-import game.domain.hjælpere.KomUdAfFængselHjælper;
-import game.domain.hjælpere.RykOpTilHjælper;
+import game.domain.hjælpere.ChanceKortHjælper;
 import gui_main.GUI;
 
-public class InformationsHenter implements RykOpTilHjælper, KomUdAfFængselHjælper {
+public class InformationsHenter implements ChanceKortHjælper {
     private GUI gui;
 
     InformationsHenter(GUI gui){

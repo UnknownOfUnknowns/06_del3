@@ -1,16 +1,16 @@
 package game.domain.felter;
 
 import game.domain.Spiller;
-import game.domain.hjælpere.KomUdAfFængselHjælper;
+import game.domain.hjælpere.ChanceKortHjælper;
 
 public class PåBesøgIFængselFelt extends Felt{
-    KomUdAfFængselHjælper hjælper;
-    public PåBesøgIFængselFelt(String navn, Felt næste_felt, KomUdAfFængselHjælper hjælper) {
+    ChanceKortHjælper hjælper;
+    public PåBesøgIFængselFelt(String navn, Felt næste_felt, ChanceKortHjælper hjælper) {
         super(navn, næste_felt);
         this.hjælper = hjælper;
     }
 
-    public PåBesøgIFængselFelt(String navn, KomUdAfFængselHjælper hjælper) {
+    public PåBesøgIFængselFelt(String navn, ChanceKortHjælper hjælper) {
         super(navn);
         this.hjælper = hjælper;
     }

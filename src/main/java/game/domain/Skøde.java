@@ -14,7 +14,7 @@ public class Skøde {
     }
 
     public void køb(Spiller køber) {
-        ejer = køber;
+        setEjer(køber);
         køber.getKonto().påvirkBalance(-pris);
     }
     public Spiller getEjer() {
