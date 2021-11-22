@@ -8,5 +8,10 @@ public abstract class ChanceKort {
         this.beskrivelse = beskrivelse;
     }
 
+    public String getBeskrivelse() {
+        return beskrivelse;
+    }
+
     public abstract void brug(Spiller s);
+
 }

@@ -3,9 +3,12 @@ package game.GUI;
 import game.Util.DomainFeltFactory;
 import game.Util.GUIFeltFactory;
 import game.Util.SpilData;
+import game.domain.Bank;
 import game.domain.Bræt;
 import game.domain.Spil;
 import game.domain.Spiller;
+import game.domain.chanceKort.ChanceKort;
+import game.domain.chanceKort.KortBunke;
 import game.domain.felter.EjendomsFelt;
 import game.domain.felter.Felt;
 import game.domain.hjælpere.RykOpTilHjælper;
@@ -52,10 +55,16 @@ public class SpilGUI implements Observer {
     public void spil(){
         while(spil.harVinder() == null){
             gui.getUserButtonPressed("Tag næste tur", "Rul");
+            gui.displayChanceCard("");
             spil.tagTur();
-            gui.setDie(spil.getTur_spiller().getTerningØjne());
+            opdaterSpillerBalance();
             opdaterFelter();
         }
+        visVinder();
+    }
+
+    private void visVinder(){
+        gui.showMessage(spillerKonfiguration.get(spil.getVinder()).getName() + " har vundet");
     }
 
     private void opdaterSpillerPosition(){
@@ -82,7 +91,6 @@ public class SpilGUI implements Observer {
         //find feltets navn der matcher mellem de to repræsentationer af felt
         GUI_Field nytFelt = feltKonfiguation.get(felt);
         nytFelt.setCar(spiller, true);
-        opdaterSpillerBalance();
     }
 
     public void setup_Spillere() throws FileNotFoundException {
@@ -120,10 +128,19 @@ public class SpilGUI implements Observer {
             spiller.attach(this);
     }
 
+    public void attachTilChancekort(){
+        Bank.getInstance().getKortBunke().attach(this);
+    }
     @Override
     public void Update(Subject s) {
         if(s.getClass() == Spiller.class){
             opdaterSpillerPosition();
+        }else if(s.getClass() == KortBunke.class){
+            gui.displayChanceCard(((KortBunke) s).getSenestTrukketKort().getBeskrivelse());
         }
+    }
+
+    public Spil getSpil() {
+        return spil;
     }
 }

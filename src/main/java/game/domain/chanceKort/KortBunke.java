@@ -1,7 +1,10 @@
 package game.domain.chanceKort;
 
-public class KortBunke {
+import game.domain.obeserver.Subject;
+
+public class KortBunke extends Subject {
     ChanceKort[] kort;
+    ChanceKort senestTrukketKort;
     public KortBunke(ChanceKort[] kort){
         this.kort = kort;
         bland(1000);
@@ -22,6 +25,12 @@ public class KortBunke {
             kort[i] = kort[i+1];
         }
         kort[kort.length-1] = udtrukketKort;
+        senestTrukketKort = udtrukketKort;
+        Notify();
         return udtrukketKort;
+    }
+
+    public ChanceKort getSenestTrukketKort() {
+        return senestTrukketKort;
     }
 }

@@ -11,6 +11,7 @@ public class Main {
         SpilGUI gui = new SpilGUI();
         ChanceKortConfigLoader loader = new ChanceKortConfigLoader(gui.getInformationsHenter());
         Bank.getInstance().setKortBunke(new KortBunke(loader.loadChanceKort()));
+        gui.attachTilChancekort();
         gui.spil();
     }
 }

@@ -79,11 +79,14 @@ public class Spiller extends Subject {
         this.felt = felt;
     }
 
+    @Override
     public String toString() {
         return "Spiller{" +
                 "konto=" + konto +
-                ", t1=" + terning +
+                ", terning=" + terning +
                 ", felt=" + felt +
+                ", fængslet=" + fængslet +
+                ", fængselsWildcard=" + fængselsWildcard +
                 '}';
     }
 
