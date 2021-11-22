@@ -13,7 +13,7 @@ public class SpilPludseligStopTest {
     @Test
     public void spilKørerINogleRunder() throws FileNotFoundException {
         SpilGUI gui = new SpilGUI();
-        ChanceKortConfigLoader loader = new ChanceKortConfigLoader(gui.getInformationsHenter());
+        ChanceKortConfigLoader loader = new ChanceKortConfigLoader(gui.getInformationsHenter(), gui.getSpil());
         Bank.getInstance().setKortBunke(new KortBunke(loader.loadChanceKort()));
         for (int i = 0; i < 50; i++) {
             gui.getSpil().tagTur();

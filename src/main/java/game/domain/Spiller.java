@@ -38,6 +38,15 @@ public class Spiller extends Subject {
         felt.landet_på(this);
     }
 
+    public void ryk(Felt rykTilFelt){
+        felt.flyttetFra(this);
+        while(felt != rykTilFelt){
+            felt = felt.getNæste_felt();
+            felt.passeret(this);
+        }
+        Notify();
+        felt.landet_på(this);
+    }
     //Ryk direkte til et felt uden at lande/passere på felter undervejs
     public void rykDirekteTil(String feltNavn){
         while(!felt.getNavn().equals(feltNavn)){
@@ -45,6 +54,7 @@ public class Spiller extends Subject {
         }
         Notify();
     }
+
 
     public boolean sidderIFængsel(){
         return fængslet;
@@ -64,10 +74,6 @@ public class Spiller extends Subject {
 
     public void setFængselsWildcard(KomUdAfFængselKort fængselsWildcard) {
         this.fængselsWildcard = fængselsWildcard;
-    }
-
-    public int[] getStatus(){
-        return new int[]{terning.getVærdi(), konto.getSaldo()};
     }
 
     public Felt getFelt() {

@@ -21,6 +21,15 @@ public class Bræt {
     public int size(){
         return felter.length;
     }
+
+    public Felt getFelt(String navn) throws Exception {
+        for (Felt felt : felter){
+            if(felt.getNavn().equals(navn))
+                return felt;
+        }
+        throw new Exception("Felt ikke fundet");
+    }
+
     public Felt getStartfelt(){
         return felter[0];
     }
