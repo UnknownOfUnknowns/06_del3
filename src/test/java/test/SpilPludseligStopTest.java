@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
 
 public class SpilPludseligStopTest {
     @Test
-    public void spilKørerINogleRunder() throws FileNotFoundException {
+    public void spilKørerINogleRunder() throws Exception {
         SpilGUI gui = new SpilGUI();
         ChanceKortConfigLoader loader = new ChanceKortConfigLoader(gui.getInformationsHenter(), gui.getSpil());
         Bank.getInstance().setKortBunke(new KortBunke(loader.loadChanceKort()));

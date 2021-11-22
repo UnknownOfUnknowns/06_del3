@@ -15,6 +15,11 @@ public class InformationsHenter implements ChanceKortHjælper {
     }
 
     @Override
+    public String getØnsketRyk(String[] feltNavne) {
+        return gui.getUserButtonPressed("Hvilket felt hvil du rykke til?", feltNavne);
+    }
+
+    @Override
     public boolean betalMedPengeEllerKort(boolean harFængselsKort) {
         if(harFængselsKort){
             String svar = gui.getUserButtonPressed("For at komme ud af fængslet skal ud enten betale eller bruge et \"Kom ud af fængsel\" kort, hvad gør du",

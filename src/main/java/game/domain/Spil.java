@@ -5,9 +5,6 @@ import game.Util.SpilData;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.stream.Collectors;
 
 public class Spil {
     private ArrayList<Spiller> spillere;
