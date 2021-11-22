@@ -33,6 +33,10 @@ public abstract class Felt {
         return næste_felt;
     }
 
+    public void flyttetFra(Spiller s){
+        return;
+    }
+
     @Override
     public String toString() {
         return "Felt{" +

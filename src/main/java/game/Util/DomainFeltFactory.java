@@ -1,14 +1,16 @@
 package game.Util;
 
 import game.domain.felter.*;
+import game.domain.hjælpere.KomUdAfFængselHjælper;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class DomainFeltFactory extends FeltFactory {
-
-    public DomainFeltFactory() throws FileNotFoundException {
+    KomUdAfFængselHjælper komUdAfFængselHjælper;
+    public DomainFeltFactory(KomUdAfFængselHjælper komUdAfFængselHjælper) throws FileNotFoundException {
         super();
+        this.komUdAfFængselHjælper = komUdAfFængselHjælper;
     }
 
     public Felt[] loadFelter() throws FileNotFoundException {
@@ -21,7 +23,7 @@ public class DomainFeltFactory extends FeltFactory {
                 case "Start" -> felter.add(new StartFelt());
                 case "Chance" -> felter.add(new ChanceFelt("Chance"));
                 case "FriParkering" -> felter.add(new FriParkeringFelt("Fri parkering"));
-                case "På besøg i fængslet" -> felter.add(new PåBesøgIFængselFelt("På besøg i fængslet"));
+                case "På besøg i fængslet" -> felter.add(new PåBesøgIFængselFelt("På besøg i fængslet", komUdAfFængselHjælper));
                 case "Fængsel" -> felter.add(new FængselsFelt("Fængsel"));
                 default -> {
                     EjendomsFelt nytFelt = new EjendomsFelt(buffer, input.nextInt());

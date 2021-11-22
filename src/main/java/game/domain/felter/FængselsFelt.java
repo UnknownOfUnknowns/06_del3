@@ -14,6 +14,7 @@ public class FængselsFelt extends Felt{
 
     @Override
     public void landet_på(Spiller s) {
-        s.rykDirekteTil("På besøg i fængsel");
+        s.rykDirekteTil("På besøg i fængslet");
+        s.setFængslet(true);
     }
 }

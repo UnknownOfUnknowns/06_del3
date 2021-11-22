@@ -3,6 +3,7 @@ package game.domain.felter;
 import game.domain.Bank;
 import game.domain.Spiller;
 import game.domain.chanceKort.ChanceKort;
+import game.domain.chanceKort.KomUdAfFængselKort;
 
 public class ChanceFelt extends Felt {
 
@@ -16,6 +17,10 @@ public class ChanceFelt extends Felt {
     @Override
     public void landet_på(Spiller s) {
         ChanceKort kort = Bank.getInstance().getKortBunke().trækKort();
+        if(kort.getClass() == KomUdAfFængselKort.class){
+            s.setFængselsWildcard((KomUdAfFængselKort) kort);
+            return;
+        }
         kort.brug(s);
     }
 }

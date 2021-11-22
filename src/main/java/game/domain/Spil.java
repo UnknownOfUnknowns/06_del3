@@ -1,5 +1,6 @@
 package game.domain;
 
+import game.Util.DomainFeltFactory;
 import game.Util.SpilData;
 
 import java.io.FileNotFoundException;
@@ -14,8 +15,8 @@ public class Spil {
     private Spiller tur_spiller;
     private Bræt spillebræt;
 
-    public Spil () throws FileNotFoundException {
-        spillebræt = new Bræt();
+    public Spil (DomainFeltFactory factory) throws FileNotFoundException {
+        spillebræt = new Bræt(factory);
         spillere = new ArrayList<>();
         for (int i = 0; i < SpilData.getInstance().getANTALSPILLERE(); i++){
             spillere.add(new Spiller(spillebræt.getStartfelt()));
@@ -26,9 +27,10 @@ public class Spil {
 
     public void tagTur(){
         tur_spiller.tag_tur();
+        skiftTurSpiller();
     }
 
-    public void skiftTurSpiller(){
+    private void skiftTurSpiller(){
         for (int i = 0; i < spillere.size()-1; i++) {
             if(spillere.get(i) == tur_spiller){
                 tur_spiller = spillere.get(i+1);
@@ -36,7 +38,6 @@ public class Spil {
             }
         }
         tur_spiller = spillere.get(0);
-
     }
 
     public Bræt getSpillebræt() {

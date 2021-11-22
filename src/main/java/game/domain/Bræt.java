@@ -10,8 +10,7 @@ import java.util.ArrayList;
 
 public class Bræt {
     Felt[] felter;
-    public Bræt () throws FileNotFoundException {
-        DomainFeltFactory factory = new DomainFeltFactory();
+    public Bræt (DomainFeltFactory factory) throws FileNotFoundException {
         felter = factory.loadFelter();
     }
 

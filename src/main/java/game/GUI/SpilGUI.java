@@ -38,6 +38,7 @@ public class SpilGUI implements Observer {
         informationsHenter = new InformationsHenter(gui);
         feltKonfiguation = new HashMap<>();
         setup_Spillere();
+        spil = new Spil(new DomainFeltFactory(informationsHenter));
         for(int i = 0; i < felter.length; i++){
             feltKonfiguation.put(spil.getSpillebræt().getFelt(i), felter[i]);
         }
@@ -53,7 +54,6 @@ public class SpilGUI implements Observer {
             gui.getUserButtonPressed("Tag næste tur", "Rul");
             spil.tagTur();
             gui.setDie(spil.getTur_spiller().getTerningØjne());
-            spil.skiftTurSpiller();
             opdaterFelter();
         }
     }
@@ -64,6 +64,7 @@ public class SpilGUI implements Observer {
             setBil(spillere[i], spil.getSpillere().get(i).getFelt());
         }
         opdaterFelter();
+        gui.setDie(spil.getTur_spiller().getTerningØjne());
     }
 
     private void opdaterSpillerBalance(){
@@ -99,7 +100,6 @@ public class SpilGUI implements Observer {
             gui.addPlayer(spillere[i]);
             gui.getFields()[0].setCar(spillere[i], true);
         }
-        spil = new Spil();
     }
 
     private void opdaterFelter(){

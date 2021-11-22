@@ -1,9 +1,10 @@
 package game.GUI;
 
+import game.domain.hjælpere.KomUdAfFængselHjælper;
 import game.domain.hjælpere.RykOpTilHjælper;
 import gui_main.GUI;
 
-public class InformationsHenter implements RykOpTilHjælper {
+public class InformationsHenter implements RykOpTilHjælper, KomUdAfFængselHjælper {
     private GUI gui;
 
     InformationsHenter(GUI gui){
@@ -12,5 +13,20 @@ public class InformationsHenter implements RykOpTilHjælper {
     @Override
     public int getØnsketRyk(int max) {
         return gui.getUserInteger("Hvor langt vil du rykke du må maks rykke " + max + " felter", 1, max);
+    }
+
+    @Override
+    public boolean betalMedPengeEllerKort(boolean harFængselsKort) {
+        if(harFængselsKort){
+            String svar = gui.getUserButtonPressed("For at komme ud af fængslet skal ud enten betale eller bruge et \"Kom ud af fængsel\" kort, hvad gør du",
+                    "Betal 1$", "Brug kort");
+            if(svar.equals("Betal 1$")){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        gui.getUserButtonPressed("Du skal betale 1$ for at komme ud", "Ok");
+        return true;
     }
 }
