@@ -4,7 +4,7 @@ import game.domain.Spiller;
 
 public class KomUdAfFængselKort extends ChanceKort{
 
-    protected KomUdAfFængselKort(String beskrivelse) {
+    public KomUdAfFængselKort(String beskrivelse) {
         super(beskrivelse);
     }
 

@@ -1,6 +1,7 @@
 package game.Util;
 
 import game.domain.chanceKort.ChanceKort;
+import game.domain.chanceKort.KomUdAfFængselKort;
 import game.domain.chanceKort.PåvirkPenge;
 import game.domain.chanceKort.RykOpTilFelter;
 import game.domain.hjælpere.RykOpTilHjælper;
@@ -23,6 +24,7 @@ public class ChanceKortConfigLoader {
             switch (input.next()){
                 case "PåvirkPenge" -> chanceKort.add(new PåvirkPenge(input.next(), input.nextInt()));
                 case "RykOpTilFelter" -> chanceKort.add(new RykOpTilFelter(input.next(), input.nextInt(), rykOpTilHjælper));
+                case "KomUdAfFængselKort" -> chanceKort.add(new KomUdAfFængselKort(input.next()));
             }
 
         }
