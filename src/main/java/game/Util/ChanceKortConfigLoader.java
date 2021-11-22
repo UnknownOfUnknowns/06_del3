@@ -1,6 +1,7 @@
 package game.Util;
 
 import game.domain.Spil;
+import game.domain.Spiller;
 import game.domain.chanceKort.*;
 import game.domain.felter.EjendomsFelt;
 import game.domain.felter.Felt;
@@ -26,6 +27,7 @@ public class ChanceKortConfigLoader {
                 case "PåvirkPenge" -> chanceKort.add(new PåvirkPenge(input.next(), input.nextInt()));
                 case "RykOpTilFelter" -> chanceKort.add(new RykOpTilFelter(input.next(), input.nextInt(), hjælper));
                 case "KomUdAfFængselKort" -> chanceKort.add(new KomUdAfFængselKort(input.next()));
+                case "AlleSamlerSammenTilEnKort" -> chanceKort.add(new AlleSamlerSammenTilEnKort(input.next(), input.nextInt(), spil.getSpillere().toArray(Spiller[]::new)));
                 case "RykFremTilFeltKort" -> {
                     String besked = input.next();
                     Felt felt = spil.getSpillebræt().getFelt(input.next());
