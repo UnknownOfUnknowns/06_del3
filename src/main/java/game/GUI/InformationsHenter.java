@@ -6,7 +6,7 @@ import gui_main.GUI;
 public class InformationsHenter implements ChanceKortHjælper {
     private GUI gui;
 
-    InformationsHenter(GUI gui){
+    public InformationsHenter(GUI gui){
         this.gui = gui;
     }
     @Override

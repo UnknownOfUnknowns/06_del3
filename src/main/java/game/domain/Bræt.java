@@ -7,6 +7,7 @@ import game.domain.felter.StartFelt;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Bræt {
     Felt[] felter;
@@ -43,5 +44,12 @@ public class Bræt {
             }
         }
         return felts;
+    }
+
+    @Override
+    public String toString() {
+        return "Bræt{" +
+                "felter=" + Arrays.toString(felter) +
+                '}';
     }
 }
