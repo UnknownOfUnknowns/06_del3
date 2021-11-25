@@ -54,6 +54,13 @@ public class Spil {
         return vinder;
     }
 
+    private void spillereIGæld(){
+        for(Spiller spiller : spillere){
+            if(spiller.getKonto().getSaldo() < 0){
+                PanteFoged.getInstance().spillerIGæld(spiller);
+            }
+        }
+    }
     public ArrayList<Spiller> getSpillere() {
         return spillere;
     }

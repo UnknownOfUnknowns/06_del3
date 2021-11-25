@@ -9,8 +9,8 @@ import game.domain.Spiller;
 import game.domain.chanceKort.KortBunke;
 import game.domain.felter.EjendomsFelt;
 import game.domain.felter.Felt;
-import game.domain.obeserver.Observer;
-import game.domain.obeserver.Subject;
+import game.domain.observer.Observer;
+import game.domain.observer.Subject;
 import gui_fields.GUI_Car;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
@@ -100,13 +100,16 @@ public class SpilGUI implements Observer {
         for (int i = 0; i < spillere.length; i++) {
             GUI_Car bil = new GUI_Car();
             bil.setPrimaryColor(bil_farver[i]);
-            spillere[i] = new GUI_Player("Spiller" + Integer.toString(i + 1), data.getSTARTBALANCE(), bil);
+            spillere[i] = new GUI_Player("Spiller" + (i + 1), data.getSTARTBALANCE(), bil);
             gui.addPlayer(spillere[i]);
             gui.getFields()[0].setCar(spillere[i], true);
         }
     }
 
     private void opdaterFelter(){
+        //Ryd alle felter for farve
+        for(EjendomsFelt felt : spil.getSpillebræt().getEjendomsfelter())
+            feltKonfiguation.get(felt).setBackGroundColor(Color.white);
         ArrayList<EjendomsFelt> felter = spil.getSpillebræt().getEjedeFelter();
         for (EjendomsFelt felt: felter) {
             GUI_Field guiFelt = feltKonfiguation.get(felt);
@@ -133,6 +136,7 @@ public class SpilGUI implements Observer {
             opdaterSpillerPosition();
         }else if(s.getClass() == KortBunke.class){
             gui.displayChanceCard(((KortBunke) s).getSenestTrukketKort().getBeskrivelse());
+            gui.showMessage("Du har trukket et chancekort");
         }
     }
 

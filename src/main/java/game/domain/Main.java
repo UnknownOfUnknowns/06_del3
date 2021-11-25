@@ -11,7 +11,8 @@ public class Main {
            ChanceKortConfigLoader loader = new ChanceKortConfigLoader(gui.getInformationsHenter(), gui.getSpil());
            Bank.getInstance().setKortBunke(new KortBunke(loader.loadChanceKort()));
            gui.attachTilChancekort();
-           Bank b = Bank.getInstance();
+           PanteFoged.getInstance().setHjælper(gui.getInformationsHenter());
+           PanteFoged.getInstance().setSpil(gui.getSpil());
            gui.spil();
        }catch (Exception e){
            System.out.println(e.getLocalizedMessage());

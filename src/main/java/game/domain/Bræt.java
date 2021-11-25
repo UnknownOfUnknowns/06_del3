@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Bræt {
-    Felt[] felter;
+    private Felt[] felter;
     public Bræt (DomainFeltFactory factory) throws FileNotFoundException {
         felter = factory.loadFelter();
     }
@@ -36,14 +36,24 @@ public class Bræt {
     }
 
     public ArrayList<EjendomsFelt> getEjedeFelter(){
-        ArrayList<EjendomsFelt> felts = new ArrayList<>();
+        ArrayList<EjendomsFelt> ejedeFelter = new ArrayList<>();
         for(Felt f : felter){
             if(f.getClass() == EjendomsFelt.class){
                 if(((EjendomsFelt) f).getSkøde().getEjer() != null)
-                    felts.add((EjendomsFelt) f);
+                    ejedeFelter.add((EjendomsFelt) f);
             }
         }
-        return felts;
+        return ejedeFelter;
+    }
+
+    public ArrayList<EjendomsFelt> getEjendomsfelter(){
+        ArrayList<EjendomsFelt> ejendomsFelter = new ArrayList<>();
+        for (int i = 0; i < felter.length; i++) {
+            if(felter[i].getClass() == EjendomsFelt.class){
+                ejendomsFelter.add((EjendomsFelt) felter[i]);
+            }
+        }
+        return ejendomsFelter;
     }
 
     @Override
@@ -51,5 +61,9 @@ public class Bræt {
         return "Bræt{" +
                 "felter=" + Arrays.toString(felter) +
                 '}';
+    }
+
+    public Felt[] getFelter() {
+        return felter;
     }
 }

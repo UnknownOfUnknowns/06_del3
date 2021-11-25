@@ -3,7 +3,7 @@ package game.domain;
 import game.Util.SpilData;
 import game.domain.chanceKort.KomUdAfFængselKort;
 import game.domain.felter.Felt;
-import game.domain.obeserver.Subject;
+import game.domain.observer.Subject;
 
 public class Spiller extends Subject {
     private Konto konto;

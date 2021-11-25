@@ -1,4 +1,4 @@
-package game.domain.obeserver;
+package game.domain.observer;
 
 import java.util.ArrayList;
 

@@ -1,9 +1,10 @@
 package game.GUI;
 
 import game.domain.hjælpere.ChanceKortHjælper;
+import game.domain.hjælpere.PanteFogedHjælper;
 import gui_main.GUI;
 
-public class InformationsHenter implements ChanceKortHjælper {
+public class InformationsHenter implements ChanceKortHjælper, PanteFogedHjælper {
     private GUI gui;
 
     public InformationsHenter(GUI gui){
@@ -32,5 +33,10 @@ public class InformationsHenter implements ChanceKortHjælper {
         }
         gui.getUserButtonPressed("Du skal betale 1$ for at komme ud", "Ok");
         return true;
+    }
+
+    @Override
+    public String ønsketEjendomTilPantsætning(String[] ejendomme) {
+        return gui.getUserButtonPressed("Du er i restance hvilken ejendom vil du betale med?", ejendomme);
     }
 }

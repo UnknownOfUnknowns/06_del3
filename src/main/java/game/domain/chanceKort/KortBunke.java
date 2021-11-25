@@ -1,6 +1,6 @@
 package game.domain.chanceKort;
 
-import game.domain.obeserver.Subject;
+import game.domain.observer.Subject;
 
 public class KortBunke extends Subject {
     ChanceKort[] kort;
