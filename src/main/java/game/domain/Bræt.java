@@ -56,6 +56,23 @@ public class Bræt {
         return ejendomsFelter;
     }
 
+    public ArrayList<EjendomsFelt> getEjendomsFelterEjetAf(Spiller s){
+        ArrayList<EjendomsFelt> ejetAfSpiller = new ArrayList<>();
+        for (EjendomsFelt felt:getEjendomsfelter()) {
+            if(felt.getSkøde().getEjer() == s)
+                ejetAfSpiller.add(felt);
+        }
+        return ejetAfSpiller;
+    }
+
+    public int getSamletEjendomsVærdi(Spiller s){
+        int sum = 0;
+        for (EjendomsFelt felt: getEjendomsFelterEjetAf(s)) {
+            sum += felt.getSkøde().getPris();
+        }
+        return sum;
+    }
+
     @Override
     public String toString() {
         return "Bræt{" +

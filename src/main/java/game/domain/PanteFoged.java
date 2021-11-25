@@ -2,8 +2,6 @@ package game.domain;
 
 import game.domain.felter.EjendomsFelt;
 import game.domain.hjælpere.PanteFogedHjælper;
-import game.domain.observer.Observer;
-import game.domain.observer.Subject;
 
 import java.util.ArrayList;
 
@@ -31,7 +29,7 @@ public class PanteFoged {
     }
 
     private void betalGældMedEjendomme(Spiller s){
-        String ønsketEjendomTilPantsætning = hjælper.ønsketEjendomTilPantsætning(findEjendommeEjetAfSpiller(s).toArray(String[]::new));
+        String ønsketEjendomTilPantsætning = hjælper.ønsketEjendomTilPantsætning(spil.getSpillebræt().getEjendomsFelterEjetAf(s).toArray(String[]::new));
         for(EjendomsFelt felt : spil.getSpillebræt().getEjendomsfelter()){
             if(felt.getNavn().equals(ønsketEjendomTilPantsætning)){
                 s.getKonto().påvirkBalance(felt.getSkøde().getPris());
@@ -44,7 +42,7 @@ public class PanteFoged {
     }
 
     private void betalGældTilAndenSpillerMedEjendomme(Spiller gældshaver, Spiller modtager){
-        String ønsketEjendomTilPantsætning = hjælper.ønsketEjendomTilPantsætning(findEjendommeEjetAfSpiller(gældshaver).toArray(String[]::new));
+        String ønsketEjendomTilPantsætning = hjælper.ønsketEjendomTilPantsætning(spil.getSpillebræt().getEjendomsFelterEjetAf(gældshaver).toArray(String[]::new));
         for(EjendomsFelt felt : spil.getSpillebræt().getEjendomsfelter()){
             if(felt.getNavn().equals(ønsketEjendomTilPantsætning)){
                 gældshaver.getKonto().påvirkBalance(felt.getSkøde().getPris());
@@ -56,15 +54,6 @@ public class PanteFoged {
             betalGældTilAndenSpillerMedEjendomme(gældshaver, modtager);
     }
 
-    private ArrayList<String> findEjendommeEjetAfSpiller(Spiller s){
-        ArrayList<String> felterEjetAfSpilleren = new ArrayList<>();
-        for (int i = 0; i < spil.getSpillebræt().getEjendomsfelter().size(); i++) {
-            if(spil.getSpillebræt().getEjendomsfelter().get(i).getSkøde().getEjer() == s){
-                felterEjetAfSpilleren.add(spil.getSpillebræt().getEjendomsfelter().get(i).getNavn());
-            }
-        }
-        return felterEjetAfSpilleren;
-    }
 
     public void setHjælper(PanteFogedHjælper hjælper) {
         this.hjælper = hjælper;
