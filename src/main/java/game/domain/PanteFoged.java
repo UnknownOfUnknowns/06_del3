@@ -29,7 +29,11 @@ public class PanteFoged {
     }
 
     private void betalGældMedEjendomme(Spiller s){
-        String ønsketEjendomTilPantsætning = hjælper.ønsketEjendomTilPantsætning(spil.getSpillebræt().getEjendomsFelterEjetAf(s).toArray(String[]::new));
+        EjendomsFelt[] felter = spil.getSpillebræt().getEjendomsFelterEjetAf(s).toArray(EjendomsFelt[]::new);
+        String[] ejendomsNavne = new String[felter.length];
+        for(int i = 0; i < felter.length; i++)
+            ejendomsNavne[i] = felter[i].getNavn();
+        String ønsketEjendomTilPantsætning = hjælper.ønsketEjendomTilPantsætning(ejendomsNavne);
         for(EjendomsFelt felt : spil.getSpillebræt().getEjendomsfelter()){
             if(felt.getNavn().equals(ønsketEjendomTilPantsætning)){
                 s.getKonto().påvirkBalance(felt.getSkøde().getPris());
@@ -42,7 +46,12 @@ public class PanteFoged {
     }
 
     private void betalGældTilAndenSpillerMedEjendomme(Spiller gældshaver, Spiller modtager){
-        String ønsketEjendomTilPantsætning = hjælper.ønsketEjendomTilPantsætning(spil.getSpillebræt().getEjendomsFelterEjetAf(gældshaver).toArray(String[]::new));
+
+        EjendomsFelt[] felter = spil.getSpillebræt().getEjendomsFelterEjetAf(gældshaver).toArray(EjendomsFelt[]::new);
+        String[] ejendomsNavne = new String[felter.length];
+        for(int i = 0; i < felter.length; i++)
+            ejendomsNavne[i] = felter[i].getNavn();
+        String ønsketEjendomTilPantsætning = hjælper.ønsketEjendomTilPantsætning(ejendomsNavne);
         for(EjendomsFelt felt : spil.getSpillebræt().getEjendomsfelter()){
             if(felt.getNavn().equals(ønsketEjendomTilPantsætning)){
                 gældshaver.getKonto().påvirkBalance(felt.getSkøde().getPris());

@@ -25,6 +25,7 @@ public class Spil {
 
     public void tagTur(){
         tur_spiller.tag_tur();
+        spillereIGæld();
         skiftTurSpiller();
     }
 
@@ -63,7 +64,7 @@ public class Spil {
     }
 
 
-    private void spillereIGæld(){
+    public void spillereIGæld(){
         for(Spiller spiller : spillere){
             if(spiller.getKonto().getSaldo() < 0){
                 PanteFoged.getInstance().spillerIGæld(spiller);
