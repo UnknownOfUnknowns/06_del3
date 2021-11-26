@@ -16,7 +16,7 @@ public class ChanceKortConfigLoader {
     private Spil spil;
     public ChanceKortConfigLoader(ChanceKortHjælper hjælper, Spil spil) throws FileNotFoundException {
         this.hjælper = hjælper;
-        input = new ConfigLoader("C:\\Users\\hans\\IdeaProjects\\06_del3\\src\\main\\resources\\ChanceKortConfig");
+        input = new ConfigLoader("C:\\Users\\hans\\IdeaProjects\\06_del3\\src\\main\\resources\\config\\ChanceKortConfig");
         this.spil = spil;
     }
 
@@ -28,6 +28,7 @@ public class ChanceKortConfigLoader {
                 case "RykOpTilFelter" -> chanceKort.add(new RykOpTilFelter(input.next(), input.nextInt(), hjælper));
                 case "KomUdAfFængselKort" -> chanceKort.add(new KomUdAfFængselKort(input.next()));
                 case "AlleSamlerSammenTilEnKort" -> chanceKort.add(new AlleSamlerSammenTilEnKort(input.next(), input.nextInt(), spil.getSpillere().toArray(Spiller[]::new)));
+                case "RykEllerTrækNytChancekort" -> chanceKort.add(new RykEllerTrækNytChancekort(input.next(), input.nextInt(), hjælper));
                 case "RykFremTilFeltKort" -> {
                     String besked = input.next();
                     Felt felt = spil.getSpillebræt().getFelt(input.next());

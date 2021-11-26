@@ -12,7 +12,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
 
-public class PanteFogedTest {
+public class
+PanteFogedTest {
 
     SpilGUI spilGUI;
     Spil spil;
@@ -37,3 +38,8 @@ public class PanteFogedTest {
         spil.spillereIGæld();
     }
 }
+
+
+
+
+

@@ -30,11 +30,10 @@ public class PanteFoged {
 
     private void betalGældMedEjendomme(Spiller s){
         EjendomsFelt[] felter = spil.getSpillebræt().getEjendomsFelterEjetAf(s).toArray(EjendomsFelt[]::new);
-        if(felter.length == 0)
-            return;
         String[] ejendomsNavne = new String[felter.length];
+        if(ejendomsNavne == null || ejendomsNavne.length == 0)
+            return;
         for(int i = 0; i < felter.length; i++)
-            //Feltet må ikke være det der er har fået spillere i restance
             if(felter[i] != s.getFelt())
                 ejendomsNavne[i] = felter[i].getNavn();
 
@@ -46,19 +45,17 @@ public class PanteFoged {
                 break;
             }
         }
-        if(s.getKonto().getSaldo() < 0)
+        if(s.getKonto().getSaldo() < 0&& spil.getSpillebræt().getSamletEjendomsVærdi(s) != 0)
             betalGældMedEjendomme(s);
     }
 
     private void betalGældTilAndenSpillerMedEjendomme(Spiller gældshaver, Spiller modtager){
-
         EjendomsFelt[] felter = spil.getSpillebræt().getEjendomsFelterEjetAf(gældshaver).toArray(EjendomsFelt[]::new);
         String[] ejendomsNavne = new String[felter.length];
-        if(felter.length == 0)
+        if(ejendomsNavne == null || ejendomsNavne.length == 0)
             return;
         for(int i = 0; i < felter.length; i++)
             ejendomsNavne[i] = felter[i].getNavn();
-
         String ønsketEjendomTilPantsætning = hjælper.ønsketEjendomTilPantsætning(ejendomsNavne);
         for(EjendomsFelt felt : spil.getSpillebræt().getEjendomsfelter()){
             if(felt.getNavn().equals(ønsketEjendomTilPantsætning)){
@@ -67,7 +64,7 @@ public class PanteFoged {
                 break;
             }
         }
-        if(gældshaver.getKonto().getSaldo() < 0)
+        if(gældshaver.getKonto().getSaldo() < 0 && spil.getSpillebræt().getSamletEjendomsVærdi(gældshaver) != 0)
             betalGældTilAndenSpillerMedEjendomme(gældshaver, modtager);
     }
 

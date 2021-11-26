@@ -1,7 +1,9 @@
 package game.Util;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class ConfigLoader {
@@ -10,7 +12,7 @@ public class ConfigLoader {
 
     public ConfigLoader(String filSti) throws FileNotFoundException {
         fil = filSti;
-        feltInput = new Scanner(new File(fil));
+        feltInput = new Scanner(new FileInputStream(filSti));
         feltInput.useDelimiter(";");
     }
 

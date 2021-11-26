@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact name="06_del3:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/06_del3_jar</output-path>
+    <root id="root">
+      <element id="archive" name="06_del3.jar">
+        <element id="module-output" name="06_del3" />
+      </element>
+      <element id="library" level="project" name="Maven: diplomitdtu:matadorgui:3.1.7" />
+    </root>
+  </artifact>
+</component>

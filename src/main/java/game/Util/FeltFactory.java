@@ -6,6 +6,6 @@ public abstract class FeltFactory {
     protected ConfigLoader input;
 
     protected FeltFactory() throws FileNotFoundException {
-        input = new ConfigLoader("C:\\Users\\hans\\IdeaProjects\\06_del3\\src\\main\\resources\\FeltConfig");
+        input = new ConfigLoader("C:\\Users\\hans\\IdeaProjects\\06_del3\\src\\main\\resources\\config\\FeltConfig");
     }
 }

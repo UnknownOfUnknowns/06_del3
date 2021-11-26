@@ -6,7 +6,7 @@ import game.domain.hjælpere.ChanceKortHjælper;
 public class RykEllerTrækNytChancekort extends ChanceKort{
     private int rykLængde;
     private ChanceKortHjælper hjælper;
-    protected RykEllerTrækNytChancekort(String beskrivelse, int rykLængde, ChanceKortHjælper hjælper) {
+    public RykEllerTrækNytChancekort(String beskrivelse, int rykLængde, ChanceKortHjælper hjælper) {
         super(beskrivelse);
         this.rykLængde = rykLængde;
         this.hjælper = hjælper;
