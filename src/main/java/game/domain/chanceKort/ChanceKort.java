@@ -12,6 +12,6 @@ public abstract class ChanceKort {
         return beskrivelse;
     }
 
-    public abstract void brug(Spiller s);
+    public abstract void brug(Spiller s) throws TrækNytKortException;
 
 }

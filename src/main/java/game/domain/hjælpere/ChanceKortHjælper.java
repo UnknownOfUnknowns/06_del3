@@ -7,4 +7,7 @@ public interface ChanceKortHjælper {
     int getØnsketRyk(int max);
 
     String getØnsketRyk(String[] feltNavne);
+
+    //True hvis man vil rykke
+    boolean rykEllerChancekort();
 }

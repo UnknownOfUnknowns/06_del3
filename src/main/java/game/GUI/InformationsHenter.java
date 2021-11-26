@@ -21,6 +21,11 @@ public class InformationsHenter implements ChanceKortHjælper, PanteFogedHjælpe
     }
 
     @Override
+    public boolean rykEllerChancekort() {
+        return gui.getUserButtonPressed("Hvad vil du gøre?", "Rykke", "Trække et ny kort").equals("Rykke");
+    }
+
+    @Override
     public boolean betalMedPengeEllerKort(boolean harFængselsKort) {
         if(harFængselsKort){
             String svar = gui.getUserButtonPressed("For at komme ud af fængslet skal ud enten betale eller bruge et \"Kom ud af fængsel\" kort, hvad gør du",
